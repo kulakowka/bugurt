@@ -92,6 +92,7 @@ router.get('/:slug', loadHub, loadSubscription, (req, res, next) => {
   Article
   .find({hubs: { $in: [hub._id] }})
   .populate('hubs')
+  .populate('domain')
   .populate('creator')
   .sort('-createdAt')
   .paginater(options, (err, data) => {

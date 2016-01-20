@@ -50,6 +50,7 @@ router.get('/:username/articles', loadUser, (req, res, next) => {
   .find({creator: user._id})
   .sort('-createdAt')
   .populate('hubs')
+  .populate('domain')
   .populate('creator')
   .paginater(options, (err, data) => {
     if (err) return next(err)

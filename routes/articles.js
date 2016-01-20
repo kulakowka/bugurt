@@ -20,7 +20,7 @@ const getNotFoundError = require('./errors/notFound')
 // GET /articles
 router.get('/', (req, res, next) => {
   var options = {
-    perPage: 10,
+    perPage: 30,
     delta: 3,
     page: req.query.page
   }

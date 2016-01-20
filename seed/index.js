@@ -5,11 +5,11 @@
 var program = require('commander')
 
 program
-  .option('-U, --users [count]', 'Seed [count] users', 10)
-  .option('-S, --subscriptions [count]', 'Seed [count] subscriptions', 10)
-  .option('-H, --hubs [count]', 'Seed [count] hubs', 10)
-  .option('-C, --comments [count]', 'Seed [count] comments', 10)
-  .option('-A, --articles [count]', 'Seed [count] articles', 10)
+  .option('-U, --users [count]', 'Seed [count] users', 100)
+  .option('-S, --subscriptions [count]', 'Seed [count] subscriptions', 100)
+  .option('-H, --hubs [count]', 'Seed [count] hubs', 100)
+  .option('-C, --comments [count]', 'Seed [count] comments', 1000)
+  .option('-A, --articles [count]', 'Seed [count] articles', 100)
   .parse(process.argv)
 
 var async = require('async')

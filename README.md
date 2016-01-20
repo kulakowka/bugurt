@@ -5,8 +5,8 @@
 You must have installed and running [MongoDB](https://www.mongodb.org/) database before you run the application.
 
 ```
-git clone https://github.com/kulakowka/geekhubs.com.git
-cd geekhubs.com
+git clone git@github.com:kulakowka/bugurt.git
+cd bugurt
 npm install 
 ```
 

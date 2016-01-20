@@ -1,4 +1,4 @@
-if subscriptions
+if currentUser && subscriptions
   li
     span.dropdown
       a.item.handle(href="/articles")= __('Мои хабы')
@@ -6,7 +6,10 @@ if subscriptions
         a(href="/articles/subscription")= __('Лента всех хабов')
         if subscriptions.length
           each subscription in subscriptions
-            a(href="/hubs/"+subscription.hub.slug)= subscription.hub.title
+            a(href="/hubs/"+subscription.hub.slug)
+              span.count= subscription.hub.articlesCount
+              = subscription.hub.title
+
         else
           a(href="/hubs")= __('Подпишитесь на хабы')
 else 

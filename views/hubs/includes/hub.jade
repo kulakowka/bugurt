@@ -13,13 +13,13 @@
 
   .description= hub.description
   .meta
-    a.articlesCount(href="/hubs/"+hub.slug)= __n('%s articles', hub.articlesCount)
+    a.articlesCount(href="/hubs/"+hub.slug)= pluralize(hub.articlesCount, __('нет публикаций'), __('%d публикация'), __('%d публикации'), __('%d публикаций'))
     = " | "
-    a.subscribersCount(href="/hubs/"+hub.slug+"/subscribers")= __n('%s subscribers', hub.subscribersCount)
+    a.subscribersCount(href="/hubs/"+hub.slug+"/subscribers")= pluralize(hub.subscribersCount, __('нет подписчиков'), __('%d подписчик'), __('%d подписчика'), __('%d подписчиков')) 
     = " | "
     a(href="/hubs/"+hub.slug)
       time(title=moment(hub.createdAt).calendar() datetime=moment(hub.createdAt).format())= moment(hub.createdAt).fromNow()
     span.author
-      = " " + __('by') + " "
+      = " " + __('создал') + " "
       a(href="/users/"+hub.creator.username)= hub.creator.username
 

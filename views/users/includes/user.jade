@@ -9,11 +9,11 @@
       a.username(href="/users/"+user.username)= user.username
   
   .meta
-    a.articlesCount(href="/users/"+user.username+"/articles")= __n('%s articles', user.articlesCount)
+    a.articlesCount(href="/users/"+user.username+"/articles")= pluralize(user.articlesCount, __('нет публикаций'), __('%d публикация'), __('%d публикации'), __('%d публикаций'))
     = " | "
-    a.commentsCount(href="/users/"+user.username+"/comments")= __n('%s comments', user.commentsCount)
+    a.commentsCount(href="/users/"+user.username+"/comments")= pluralize(user.commentsCount, __('нет комментариев'), __('%d комментарий'), __('%d комментария'), __('%d комментариев'))
     = " | "
-    a.commentsCount(href="/users/"+user.username+"/hubs")= __n('%s hubs', user.hubsCount)
+    a.commentsCount(href="/users/"+user.username+"/hubs")= pluralize(user.hubsCount, __('нет хабов'), __('%d хаб'), __('%d хаба'), __('%d хабов'))
     = " | "
     a(href="/users/"+user.username)
       time(title=moment(user.createdAt).calendar() datetime=moment(user.createdAt).format())= moment(user.createdAt).fromNow()

@@ -8,7 +8,6 @@ var router = express.Router()
 var Comment = require('../models/comment')
 var Article = require('../models/article')
 var Hub = require('../models/hub')
-var SubscriptionUserToHub = require('../models/subscriptionUserToHub')
 
 // Policies
 const ifUser = require('./policies/ifUser')
@@ -28,6 +27,7 @@ router.get('/', (req, res, next) => {
   Article
   .find()
   .sort('-createdAt')
+  .populate('domain')
   .populate('hubs')
   .populate('creator')
   .paginater(options, (err, data) => {
@@ -49,6 +49,7 @@ router.get('/subscription', ifUser, (req, res, next) => {
   Article
   .find({hubs: {$in: hubs}})
   .sort('-createdAt')
+  .populate('domain')
   .populate('hubs')
   .populate('creator')
   .paginater(options, (err, data) => {
@@ -135,6 +136,7 @@ function loadArticle (req, res, next) {
   Article
   .findById(id)
   .populate('hubs')
+  .populate('domain')
   .populate('creator')
   .exec((err, article) => {
     if (err) return next(err)

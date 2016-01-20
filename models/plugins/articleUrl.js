@@ -1,6 +1,12 @@
 'use strict'
 
 var url = require('url')
+var mongoose = require('mongoose')
+
+var Schema = mongoose.Schema
+
+// Models
+var Domain = require('../domain')
 
 module.exports = exports = function deletedAtPlugin (schema, options) {
   schema.add({
@@ -9,10 +15,9 @@ module.exports = exports = function deletedAtPlugin (schema, options) {
       trim: true,
       maxlength: 2000
     },
-    hostname: {
-      lowercase: true,
-      type: String,
-      trim: true
+    domain: {
+      type: Schema.Types.ObjectId,
+      ref: 'Domain'
     }
   })
 
@@ -20,12 +25,20 @@ module.exports = exports = function deletedAtPlugin (schema, options) {
     if (!this.isModified('url')) return next()
     let urlObject = url.parse(this.url)
     this.url = urlObject.hostname && urlObject.href
-    this.hostname = urlObject.hostname && urlObject.hostname.replace(/^www./i, '')
-    next()
+    let hostname = urlObject.hostname && urlObject.hostname.replace(/^www./i, '')
+
+    let domain = { hostname }
+    Domain.findOrCreate(domain, domain, (err, domain) => {
+      if (err) return next(err)
+      console.log(domain)
+      this.domain = domain._id
+      console.log(this)
+      next()
+    })
   })
 
   if (options && options.index) {
     schema.path('url').index(options.index)
-    schema.path('hostname').index(options.index)
+    schema.path('domain').index(options.index)
   }
 }

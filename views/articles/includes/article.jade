@@ -34,7 +34,7 @@ article
             = ", "
           a(href="/hubs/"+hub.slug)= hub.title
 
-    if article.hostname
+    if article.domain
       = " | "      
-      a.hostName(href="/domain/" + article.hostname)= article.hostname
+      a.hostName(href="/domain/" + article.domain.hostname)= article.domain.hostname
     

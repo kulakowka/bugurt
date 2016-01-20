@@ -29,10 +29,8 @@ module.exports = exports = function deletedAtPlugin (schema, options) {
 
     let domain = { hostname }
     Domain.findOrCreate(domain, domain, (err, domain) => {
-      if (err) return next(err)
-      console.log(domain)
+      if (err) return next(err)      
       this.domain = domain._id
-      console.log(this)
       next()
     })
   })

@@ -23,12 +23,12 @@ article
     a(href="/articles/"+article._id+"/"+article.slug)
       time(title=moment(article.createdAt).calendar() datetime=moment(article.createdAt).format())= moment(article.createdAt).fromNow()
     span.author
-      = " " + __('by') + " "
+      = " " + __('написал') + " "
       a.username(href="/users/"+article.creator.username)= article.creator.username
 
     if article.hubs.length
       span.hubs 
-        = " " + __('in') + " "
+        = " " + __('в') + " "
         each hub, index in article.hubs
           if index
             = ", "

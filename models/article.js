@@ -25,13 +25,10 @@ var schema = new Schema({
     trim: true,
     maxlength: 200
   },
-  summary: {
-    type: String,
-    required: true
-  },
   content: {
     type: String,
-    required: true
+    trim: true,
+    maxlength: 10000
   },
   commentsCount: {
     type: Number,
@@ -51,6 +48,7 @@ var schema = new Schema({
 
 // Model plugins
 schema.plugin(require('./plugins/deletedAt'))
+schema.plugin(require('./plugins/articleUrl'), { index: true })
 
 // Model virtual attributes
 schema.virtual('html').get(function () {

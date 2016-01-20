@@ -1,12 +1,20 @@
 article
   if showFullContent
     h1
-      a.title(href="/articles/"+article._id+"/"+article.slug)= article.title
+      if article.url
+        a.title(href=article.url target="_blank")= article.title
+      else
+        a.title(href="/articles/"+article._id+"/"+article.slug)= article.title
+
       if currentUser && (currentUser.isAdmin || currentUser._id.equals(article.creator._id))
         a.edit(href="/articles/"+article._id+"/edit")= __('edit')
   else
     h2
-      a.title(href="/articles/"+article._id+"/"+article.slug)= article.title
+      if article.url
+        a.title(href=article.url target="_blank")= article.title
+      else
+        a.title(href="/articles/"+article._id+"/"+article.slug)= article.title
+      
   if showFullContent
     .content.textHtml!= article.html
   .meta
@@ -26,6 +34,7 @@ article
             = ", "
           a(href="/hubs/"+hub.slug)= hub.title
 
-
-          
-        
+    if article.hostname
+      = " | "      
+      a.hostName(href="/domain/" + article.hostname)= article.hostname
+    

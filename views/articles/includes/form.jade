@@ -1,14 +1,11 @@
 form.articleForm(action=(article._id ? "/articles/"+article._id+"?_method=PUT" : "/articles") method="post" autocomplete="off" enctype="application/x-www-form-urlencoded")
   .field
-    input(type="text" name="title" placeholder=__("Title") value=article.title maxLength="150" required autofocus)
+    input(type="text" name="title" placeholder=__("Заголовок") value=article.title maxLength="150" required autofocus)
   .field
-    .tabs
-      .tab.active(data-frame="write")= __('Text')
-      .tab(data-frame="preview")= __('Link')
-    .frame.write.open
-      textarea(name="content" rows="6" placeholder=__("Article content. Markdown, plain text.") required)= article.content
-    .frame.preview
-      input(type="text" name="url" placeholder=__("URL") value=article.url maxLength="2000" )
+    input(type="url" name="url" placeholder=__("URL") value=article.url maxLength="2000" )
+  
+  .field  
+    textarea(name="content" rows="6" placeholder=__("Текст") maxLength="10000")= article.content  
   .field
     select(name="hubs" multiple placeholder=__("Hubs"))
       each hub in hubs
@@ -18,3 +15,4 @@ form.articleForm(action=(article._id ? "/articles/"+article._id+"?_method=PUT" :
           option(value=hub._id)= hub.title
   .field
     button.btn.btn-submit(type="submit")= __('save')
+

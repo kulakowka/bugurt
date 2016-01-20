@@ -88,7 +88,7 @@ router.put('/:id', ifUser, loadArticleNoPopulate, ifCanEdit, (req, res, next) =>
 
   Object.assign(article, {
     title: req.body.title,
-    summary: req.body.summary,
+    url: req.body.url,
     content: req.body.content,
     hubs: req.body.hubs
   })
@@ -103,7 +103,7 @@ router.put('/:id', ifUser, loadArticleNoPopulate, ifCanEdit, (req, res, next) =>
 router.post('/', ifUser, (req, res, next) => {
   var article = new Article({
     title: req.body.title,
-    summary: req.body.summary,
+    url: req.body.url,
     content: req.body.content,
     hubs: req.body.hubs,
     creator: req.user._id

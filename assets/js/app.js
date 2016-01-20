@@ -19,7 +19,6 @@ $('select[name="hubs"]').selectize({
 attachFastClick(document.body)
 
 // Handlers
-var marked = require('./handlers/marked')
 var comment = require('./handlers/comment')
 var article = require('./handlers/article')
 var hub = require('./handlers/hub')
@@ -31,16 +30,6 @@ $(document)
 
   // dropdown
   .on('click', '.dropdown .handle', dropdown.onHandleClick)
-
-  // marked
-  .on('click', '.commentForm .tabs .tab', marked.onTabClick)
-  .on('click', '.articleForm .tabs .tab', marked.onTabClick)
-
-  // active tab in focus
-  .on('focus', '.articleForm textarea[name="content"]', marked.onFocus)
-  .on('blur', '.articleForm textarea[name="content"]', marked.onBlur)
-  .on('focus', '.commentForm textarea[name="content"]', marked.onFocus)
-  .on('blur', '.commentForm textarea[name="content"]', marked.onBlur)
 
   // hubs
   .on('click', '.js-hub-subscribe', hub.onSubscribeClick)

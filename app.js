@@ -56,7 +56,6 @@ app.use(passport.session())
 app.use(require('./config/viewHelpers'))
 
 // Routes
-app.use(require('./routes/sidebar'))
 app.use(require('./routes/all'))
 app.use('/', require('./routes/index'))
 app.use('/articles', require('./routes/articles'))

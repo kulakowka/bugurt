@@ -10,6 +10,7 @@ module.exports = exports = function deletedAtPlugin (schema, options) {
       maxlength: 2000
     },
     hostname: {
+      lowercase: true,
       type: String,
       trim: true
     }

@@ -1,0 +1,13 @@
+extends ../layout
+
+block head
+  title= article.title
+
+block content
+  - var showFullContent = true
+  include includes/article
+  
+  .commentsList#comments
+    include ../comments/includes/list
+
+  include ../comments/includes/form

@@ -1,0 +1,12 @@
+if subscriptions.length
+  .userNotice
+    = __("Вы подписаны на: ")
+    each subscription, index in subscriptions
+      if index
+        = ", "
+      a(href="/hubs/"+subscription.hub.slug)= subscription.hub.title
+else
+  .userNotice
+    = __('Подпишитесь на ')
+    a(href="/hubs")= __('интересные хабы')
+    = __(' чтобы читать их в одной ленте.')

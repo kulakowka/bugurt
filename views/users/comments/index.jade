@@ -1,0 +1,12 @@
+extends ../../layout
+
+block head
+  title= __('User\'s comments')
+
+block content
+  if user.isDeleted
+    include ../includes/deleted
+  else
+    include ../includes/user
+    .userComments
+      include ../../comments/includes/list

@@ -1,0 +1,43 @@
+.userHubs:not(:empty):before
+  content: 'User hubs:'
+  font-size fontsize1
+  color #ccc
+  border-bottom 1px solid #eee
+  padding-bottom 0.5em
+  display block
+  margin 20px 0 0 
+.hub
+  h1
+    font-size fontsize4
+  h2
+    font-size fontsize2
+  h1, 
+  h2
+    a.title
+      color #333
+    a.edit      
+      font-weight normal
+      margin-left 10px
+      font-size 10px
+      vertical-align super
+    .subscriptionBtn
+      margin-left 20px
+  .meta
+    margin-top 1em
+    font-size fontsize3
+    color grey
+    text-transform lowercase
+    a
+      color grey
+
+.subscriptionBtn
+  // cursor pointer
+  .subscribe
+    display inline-block
+  .unsubscribe
+    display none
+.subscriptionBtn.subscribed
+  .subscribe
+    display none
+  .unsubscribe
+    display inline-block

@@ -1,0 +1,36 @@
+extends ../layout
+
+block head
+  title= __('Settings')
+
+block content
+  h1= __('Settings')
+
+  form.settingsForm.js-form-user-update
+    .field
+      label.field-label(for="username-field")= __('username:') + ' *'
+      input.field-input(id="username-field" type="text" name="username" placeholder=__("username") autocomplete="off" maxLength="20" value=currentUser.username)
+    .field
+      label.field-label(for="email-field")= __('email:')
+      input.field-input(id="email-field" type="email" name="email" placeholder=__("email") autocomplete="off" value=currentUser.email)
+      unless currentUser.emailConfirmed
+        small= __('Email not confirmed')
+    .field
+      label.field-label(for="password-field")= __('current password:') + ' *'
+      input.field-input(id="password-field" type="password" name="password" placeholder=__("current password") autocomplete="off" required)
+    .field
+      label.field-label(for="newPassword-field")= __('new password:')
+      input.field-input(id="newPassword-field" type="password" name="newPassword" placeholder=__("new password") autocomplete="off")
+    .field
+      button.btn.btn-submit(type="submit")= __('Update account')
+
+  h3= __('Delete account')
+
+  form.settingsForm.js-form-user-destroy
+    .field
+      label.field-label(for="password-2-field")= __('current password:') + ' *'
+      input.field-input(id="password-2-field" type="password" name="password" placeholder=__("current password") autocomplete="off" required)
+    .field
+      button.btn.btn-submit(type="submit")= __('Delete account')
+
+  

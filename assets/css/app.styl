@@ -1,0 +1,123 @@
+fontsize1 = 14px
+fontsize2 = 18px
+fontsize3 = 13px
+fontsize4 = 22px
+fontfamily1 = "Lucida Grande", Helvetica, Arial, sans-serif
+
+@import '_variables'
+@import 'selectize'
+@import 'textHtml'
+@import 'pagination'
+@import 'buttons'
+@import 'dropdown'
+@import 'code'
+@import 'comments'
+@import 'articles'
+@import 'users'
+@import 'hubs'
+@import 'pageTabs'
+@import 'notices'
+@import 'forms'
+@import 'includes/sidebar'
+@import 'includes/sidebar/subscription'
+@import 'includes/sidebar/topArticles'
+@import 'includes/sidebar/topHubs'
+@import 'includes/sidebar/topWriters'
+
+
+
+
+body
+  padding 0px
+  margin 0
+  font-size fontsize1 
+  font-family fontfamily1
+  background #fff //#f8f8ff
+
+*
+  box-sizing border-box
+  
+hr
+  border 0
+  margin 1em 0
+  padding 0
+  height 1px 
+  background #eee
+a
+  color #4078c0
+  text-decoration none
+  &:hover
+    text-decoration underline
+
+.hidden
+  display none
+
+// https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+.layout
+  max-width 1024px
+  margin auto
+  // background #fff
+  &:after
+    content: "."
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+
+    
+  > .siteHeader
+    width 100%
+    display block
+  > .sidebar
+    width 300px
+    display block
+    float right
+    vartical-align top
+  > .content 
+    margin-right 320px
+    display block
+    padding 0 0px
+
+
+
+footer
+  clear: both
+  background #eee
+  margin 50px 0 0
+  padding 20px
+  font-size fontsize3
+  border-top 1px solid #eee
+  color #999
+header
+  background #4078c0
+  padding 0 20px
+  margin 0 0 20px
+  min-height 40px
+  .logo
+    float left
+    font-size 1.2em
+    line-height 40px
+    a
+      color white
+      font-weight bold
+  .leftMenu
+    float left
+  .rightMenu
+    float right
+  ul
+    margin 0
+    paddin 0
+    list-style none
+    li
+      margin 0 10px
+      paddin 0
+      display inline-block
+      a.item
+        display inline-block
+        line-height 40px
+        color white
+      a.item:first-letter
+        text-transform uppercase 
+      a.item + a.item
+        display inline-block
+        margin-left 20px

@@ -1,0 +1,31 @@
+article
+  if showFullContent
+    h1
+      a.title(href="/articles/"+article._id+"/"+article.slug)= article.title
+      if currentUser && (currentUser.isAdmin || currentUser._id.equals(article.creator._id))
+        a.edit(href="/articles/"+article._id+"/edit")= __('edit')
+  else
+    h2
+      a.title(href="/articles/"+article._id+"/"+article.slug)= article.title
+  if showFullContent
+    .content.textHtml!= article.html
+  .meta
+    a.commentsCount(href="/articles/"+article._id+"/"+article.slug+"#comments")= __n('%s comments', article.commentsCount)
+    = " | "
+    a(href="/articles/"+article._id+"/"+article.slug)
+      time(title=moment(article.createdAt).calendar() datetime=moment(article.createdAt).format())= moment(article.createdAt).fromNow()
+    span.author
+      = " " + __('by') + " "
+      a.username(href="/users/"+article.creator.username)= article.creator.username
+
+    if article.hubs.length
+      span.hubs 
+        = " " + __('in') + " "
+        each hub, index in article.hubs
+          if index
+            = ", "
+          a(href="/hubs/"+hub.slug)= hub.title
+
+
+          
+        

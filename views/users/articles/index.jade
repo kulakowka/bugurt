@@ -1,0 +1,13 @@
+extends ../../layout
+
+block head
+  title= __('User\'s articles')
+
+block content
+  if user.isDeleted
+    include ../includes/deleted
+  else
+    include ../includes/user
+    .userArticles
+      include ../../articles/includes/list
+    

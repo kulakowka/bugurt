@@ -1,0 +1,35 @@
+.userComments:not(:empty):before
+  content: 'User comments:'
+  font-size fontsize1
+  color #ccc
+  border-bottom 1px solid #eee
+  padding-bottom 0.5em
+  display block
+  margin 20px 0 0 
+.commentsList
+  margin 2em 0
+.commentsList:not(:empty):before
+  content: 'Comments:'
+  font-size fontsize1
+  color #ccc
+  border-bottom 1px solid #eee
+  padding-bottom 0.5em
+  display block
+
+.comment
+  margin 0 -20px
+  padding 20px 20px
+  &:target
+    outline 1px dashed deepskyblue
+    
+  .content
+    line-height 1.5em
+    font-size fontsize1
+    
+  .meta
+    margin-top 1em
+    font-size fontsize3
+    color grey
+    text-transform lowercase
+    a
+      color grey

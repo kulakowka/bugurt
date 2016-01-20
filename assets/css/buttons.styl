@@ -1,0 +1,27 @@
+.btn
+  border 0
+  padding 5px 10px
+  background-color greyColor
+  color blackColor
+  font-size fontsize1
+  border-radius 0
+  cursor pointer
+  display inline-block
+  font-weight normal
+  line-height 1.5em
+  &:hover
+    text-decoration none
+  &:focus 
+    outline-style solid
+    outline-width 2px
+  &:disabled
+    opacity 0.5
+  &.loading
+    &:after
+      content '...'
+.btn-action
+  color white
+  background-color blueColor
+.btn-submit
+  color white
+  background-color blueColor

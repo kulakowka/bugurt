@@ -1,0 +1,31 @@
+header.siteHeader
+  ul.rightMenu
+    if currentUser
+      li
+        span.dropdown
+          a.item.handle(href="/users/" + currentUser.username)= currentUser.username
+          span.menu
+            a(href="/users/" + currentUser.username)= currentUser.username
+            a(href="/users/" + currentUser.username + "/articles")= __('Мои публикации')
+            a(href="/users/" + currentUser.username + "/comments")= __('Мои комментарии')
+            a(href="/users/" + currentUser.username + "/hubs")= __('Мои хабы')
+            a(href="/settings")= __('Настройки')
+            a.js-button-logout(href="#")= __('Выход')
+    else 
+      li
+        a.item(href="/auth/signin" rel="nofollow")= __('Вход')
+      li
+        a.item(href="/auth/signup" rel="nofollow")= __('Регистрация')
+
+
+  .logo
+    a(href="/")= __('Бугурт.ру')
+
+  ul.leftMenu
+    li 
+      a.item(href="/articles")= __('Публикации')
+    li 
+      a.item(href="/hubs")= __('Хабы')
+    li
+      a.item(href="/users")= __('Пользователи')
+  

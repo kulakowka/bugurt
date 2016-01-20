@@ -1,0 +1,42 @@
+.userArticles:not(:empty):before
+  content: 'User articles:'
+  font-size fontsize1
+  color #ccc
+  border-bottom 1px solid #eee
+  padding-bottom 0.5em
+  display block
+  margin 20px 0 0 
+article + article
+  margin-top 1em
+article
+  > h1
+    font-size fontsize4
+  > h2
+    font-size fontsize2
+  > h1, 
+  > h2
+    overflow hidden
+    max-width 100%
+    text-overflow ellipsis
+    margin 0
+    a.title
+      color #333
+      &:visited
+        color grey
+    a.edit      
+      font-weight normal
+      margin-left 10px
+      font-size 10px
+      vertical-align super
+  .content
+    line-height 1.5em
+    font-size fontsize1
+    
+  .meta
+    margin-top 0.2em
+    font-size fontsize3
+    color grey
+    text-transform lowercase
+    a
+      color grey
+    

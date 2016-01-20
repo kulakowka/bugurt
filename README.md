@@ -1,7 +1,5 @@
 # The project is in development :octocat:
 
-![Site screenshot](https://habrastorage.org/files/a78/b66/10d/a78b6610d33748c5ae256bfc7cfc5061.png)
-
 #### Install:
 
 You must have installed and running [MongoDB](https://www.mongodb.org/) database before you run the application.

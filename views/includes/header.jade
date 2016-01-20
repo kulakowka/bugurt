@@ -4,7 +4,7 @@ header.siteHeader
       li
         span.dropdown
           a.item.handle(href="/users/" + currentUser.username)= currentUser.username
-          span.menu
+          span.menu.right
             a(href="/users/" + currentUser.username)= currentUser.username
             a(href="/users/" + currentUser.username + "/articles")= __('Мои публикации')
             a(href="/users/" + currentUser.username + "/comments")= __('Мои комментарии')
@@ -22,8 +22,7 @@ header.siteHeader
     a(href="/")= __('Бугурт.ру')
 
   ul.leftMenu
-    li 
-      a.item(href="/articles")= __('Публикации')
+    include ./subscribedHubs
     li 
       a.item(href="/hubs")= __('Хабы')
     li

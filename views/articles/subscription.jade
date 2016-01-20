@@ -6,5 +6,7 @@ block head
 block content
   
   include includes/tabs
-  include includes/subscribedHubs
-  include includes/list
+  if results.length
+    include includes/list
+  else
+    p= __('Вы не подписаны ни на одни хаб')

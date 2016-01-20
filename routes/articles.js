@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
 })
 
 // GET /articles/subscription
-router.get('/subscription', ifUser, loadSubscriptions, (req, res, next) => {
+router.get('/subscription', ifUser, (req, res, next) => {
   let subscriptions = res.locals.subscriptions
   let hubs = subscriptions.map(subscription => subscription.hub)
   var options = {
@@ -148,17 +148,6 @@ function loadHubs (req, res, next) {
   Hub.find().exec((err, hubs) => {
     if (err) return next(err)
     res.locals.hubs = hubs
-    next()
-  })
-}
-
-function loadSubscriptions (req, res, next) {
-  SubscriptionUserToHub
-  .find({creator: req.user._id})
-  .populate('hub')
-  .exec((err, subscriptions) => {
-    if (err) return next(err)
-    res.locals.subscriptions = subscriptions
     next()
   })
 }

@@ -6,10 +6,16 @@
     display none
     background white
     position absolute
-    right -20px
     top -8px
-    box-shadow 0 2px 8px 0 rgba(0, 0, 0, 0.1)
+    box-shadow 0 2px 8px 0 rgba(0, 0, 0, 0.2)
     text-align right
+    z-index 1
+    &.left
+      text-align left
+      left -20px
+    &.right
+      text-align right
+      right -20px
     a
       display block
       padding 10px 20px

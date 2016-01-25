@@ -2,7 +2,7 @@
   .content.textHtml!= comment.html
   .meta
     a(href="/articles/"+comment.article._id+"/"+comment.article.slug+"#"+comment._id)
-      time(title=moment(comment.createdAt).calendar() datetime=moment(comment.createdAt).format())= moment(comment.createdAt).fromNow()
+      time(title=__('Дата публикации комментария: ') + moment(comment.createdAt).calendar() datetime=moment(comment.createdAt).format())= moment(comment.createdAt).fromNow()
+    = " | "
     span.author
-      = " " + __('by') + " "
-      a(href="/users/"+comment.creator.username)= comment.creator.username
+      a(href="/users/"+comment.creator.username title=__('Автор комментария: ') + comment.creator.username)= comment.creator.username

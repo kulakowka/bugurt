@@ -11,7 +11,9 @@ html
       include ./includes/header
       .content 
         block content
-    script.
-      // remove img with on load error
-      (function(){function cb () {this.parentNode.removeChild(this)};for(var i=0,n=document.images,l=n.length;i<l;i++) n[i].onerror = cb}())
+
     script(src="/js/app.js")
+    //- script.
+    //-   // remove img with on load error
+    //-   (function(){function cb () {this.parentNode.removeChild(this)};for(var i=0,n=document.images,l=n.length;i<l;i++) n[i].onerror = cb}())      
+    

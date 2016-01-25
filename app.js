@@ -20,8 +20,8 @@ let app = express()
 
 // minimal config
 i18n.configure({
-  defaultLocale: 'en',
-  locales: ['en'],
+  defaultLocale: 'ru',
+  locales: ['ru'],
   directory: __dirname + '/locales'
 })
 

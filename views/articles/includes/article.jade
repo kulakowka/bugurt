@@ -7,7 +7,7 @@ article
         a.title(href="/articles/"+article._id+"/"+article.slug)= article.title
 
       if currentUser && (currentUser.isAdmin || currentUser._id.equals(article.creator._id))
-        a.edit(href="/articles/"+article._id+"/edit")= __('edit')
+        a.edit(href="/articles/"+article._id+"/edit")= __('изменить')
   else
     h2
       if article.url

@@ -2,10 +2,11 @@
 extends ../../layout
 
 block content
-  p Hello #{user.username}!
+  p Привет #{user.username}!
 
-  p You can confirm your account email through the link below:
+  p Вы успешно зарегистрировались на bugurt.ru. 
+  p Для активации аккаунта необходимо:
   p 
-    a.btn(href='http://geekhubs.com/auth/confirm/'+token) Confirm my account
+    a.btn(href='http://geekhubs.com/auth/confirm/'+token) Подтвердить мой email
 
   

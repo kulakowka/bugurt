@@ -3,7 +3,7 @@
     h1
       a.title(href="/hubs/"+hub.slug)= hub.title
       if currentUser && (currentUser.isAdmin || currentUser._id.equals(hub.creator._id))
-        a.edit(href="/hubs/"+hub.slug+"/edit")= __('edit')
+        a.edit(href="/hubs/"+hub.slug+"/edit")= __('изменить')
       include subscriptionBtn
   else
     h2
@@ -18,8 +18,8 @@
     a.subscribersCount(href="/hubs/"+hub.slug+"/subscribers")= pluralize(hub.subscribersCount, __('нет подписчиков'), __('%d подписчик'), __('%d подписчика'), __('%d подписчиков')) 
     = " | "
     a(href="/hubs/"+hub.slug)
-      time(title=moment(hub.createdAt).calendar() datetime=moment(hub.createdAt).format())= moment(hub.createdAt).fromNow()
+      time(title=__('Дата создания хаба: ') + moment(hub.createdAt).calendar() datetime=moment(hub.createdAt).format())= moment(hub.createdAt).fromNow()
+    = " | "
     span.author
-      = " " + __('создал') + " "
-      a(href="/users/"+hub.creator.username)= hub.creator.username
+      a(href="/users/"+hub.creator.username title=__('Создатель хаба'))= hub.creator.username
 

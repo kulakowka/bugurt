@@ -1,36 +1,38 @@
 extends ../layout
 
 block head
-  title= __('Settings')
+  title= __('Настройки')
 
 block content
-  h1= __('Settings')
+  h1= __('Настройки')
 
   form.settingsForm.js-form-user-update
     .field
-      label.field-label(for="username-field")= __('username:') + ' *'
-      input.field-input(id="username-field" type="text" name="username" placeholder=__("username") autocomplete="off" maxLength="20" value=currentUser.username)
+      label.field-label(for="username-field")= __('Логин:') + ' *'
+      input.field-input(id="username-field" type="text" name="username" placeholder=__("логин") autocomplete="off" maxLength="20" value=currentUser.username)
     .field
-      label.field-label(for="email-field")= __('email:')
+      label.field-label(for="email-field")= __('Email:')
       input.field-input(id="email-field" type="email" name="email" placeholder=__("email") autocomplete="off" value=currentUser.email)
       unless currentUser.emailConfirmed
-        small= __('Email not confirmed')
+        small= __('Email не подтвержден')
     .field
-      label.field-label(for="password-field")= __('current password:') + ' *'
-      input.field-input(id="password-field" type="password" name="password" placeholder=__("current password") autocomplete="off" required)
+      label.field-label(for="password-field")= __('Текущий пароль:') + ' *'
+      input.field-input(id="password-field" type="password" name="password" placeholder=__("текущий пароль") autocomplete="off" required)
     .field
-      label.field-label(for="newPassword-field")= __('new password:')
-      input.field-input(id="newPassword-field" type="password" name="newPassword" placeholder=__("new password") autocomplete="off")
+      label.field-label(for="newPassword-field")= __('Новый пароль:')
+      input.field-input(id="newPassword-field" type="password" name="newPassword" placeholder=__("новый пароль") autocomplete="off")
     .field
-      button.btn.btn-submit(type="submit")= __('Update account')
-
-  h3= __('Delete account')
+      button.btn.btn-submit(type="submit")= __('Сохранить изменения')
+  br
+  br
+  br
+  h3= __('Жизнь боль!')
 
   form.settingsForm.js-form-user-destroy
     .field
-      label.field-label(for="password-2-field")= __('current password:') + ' *'
-      input.field-input(id="password-2-field" type="password" name="password" placeholder=__("current password") autocomplete="off" required)
+      label.field-label(for="password-2-field")= __('Текущий пароль:') + ' *'
+      input.field-input(id="password-2-field" type="password" name="password" placeholder=__("текущий пароль") autocomplete="off" required)
     .field
-      button.btn.btn-submit(type="submit")= __('Delete account')
+      button.btn.btn-submit(type="submit")= __('Удалить аккаунт')
 
   

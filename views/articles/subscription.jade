@@ -5,7 +5,8 @@ block head
 
 block content
   
-  if results.length
+  if docs.length
     include includes/list
+    +paginate('/articles/subscription')
   else
-    p= __('Вы не подписаны ни на одни хаб')
+    p= __('Нет публикаций в хабах на которые вы подписаны')

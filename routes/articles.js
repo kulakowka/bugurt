@@ -18,44 +18,39 @@ const getNotFoundError = require('./errors/notFound')
 
 // GET /articles
 router.get('/', (req, res, next) => {
+  var query = {}
   var options = {
-    perPage: 30,
-    delta: 3,
-    page: req.query.page
+    // select:   'title date author',
+    sort: { createdAt: -1 },
+    populate: 'domain hubs creator',
+    // lean: true,
+    offset: req.query.offset || 0,
+    limit: 30
   }
 
-  Article
-  .find()
-  .sort('-createdAt')
-  .populate('domain')
-  .populate('hubs')
-  .populate('creator')
-  .paginater(options, (err, data) => {
-    if (err) return next(err)
-    res.render('articles/index', data)
-  })
+  Article.paginate(query, options).then(result => {
+    res.render('articles/index', result)
+  }).catch(next)
 })
 
 // GET /articles/subscription
 router.get('/subscription', ifUser, (req, res, next) => {
   let subscriptions = res.locals.subscriptions
   let hubs = subscriptions.map(subscription => subscription.hub)
+
+  var query = {hubs: {$in: hubs}}
   var options = {
-    perPage: 10,
-    delta: 3,
-    page: req.query.page
+    // select:   'title date author',
+    sort: { createdAt: -1 },
+    populate: 'domain hubs creator',
+    // lean: true,
+    offset: req.query.offset || 0,
+    limit: 30
   }
 
-  Article
-  .find({hubs: {$in: hubs}})
-  .sort('-createdAt')
-  .populate('domain')
-  .populate('hubs')
-  .populate('creator')
-  .paginater(options, (err, data) => {
-    if (err) return next(err)
-    res.render('articles/subscription', data)
-  })
+  Article.paginate(query, options).then(result => {
+    res.render('articles/subscription', result)
+  }).catch(next)
 })
 
 // GET /articles/new
@@ -79,7 +74,7 @@ router.get('/:id/:slug', loadArticle, function (req, res, next) {
   .populate('article')
   .exec((err, comments) => {
     if (err) return next(err)
-    res.render('articles/show', {results: comments, comment: {}})
+    res.render('articles/show', {docs: comments, comment: {}})
   })
 })
 

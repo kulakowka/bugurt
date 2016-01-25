@@ -10,3 +10,4 @@ block content
     include ../includes/user
     .userComments
       include ../../comments/includes/list
+      +paginate('/users/'+user.username+'/comments')

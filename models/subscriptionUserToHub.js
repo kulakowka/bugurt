@@ -1,5 +1,8 @@
 'use strict'
 
+// Packages
+var mongoosePaginate = require('mongoose-paginate')
+
 // Configs
 var mongoose = require('../config/mongoose')
 
@@ -22,6 +25,9 @@ var schema = new Schema({
     required: true
   }
 }, { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
+
+// Model plugins
+schema.plugin(mongoosePaginate)
 
 // Pre save hooks
 schema.pre('save', function (next) {

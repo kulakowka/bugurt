@@ -20,54 +20,49 @@ const getNotFoundError = require('./errors/notFound')
 router.get('/', (req, res, next) => {
   let subscriptions = res.locals.subscriptions || []
   let subscribedHubsIds = subscriptions.map(subscription => subscription.hub._id.toString())
-  console.log('subscribedHubsIds', subscribedHubsIds)
-  var options = {
-    perPage: 10,
-    delta: 3,
-    page: req.query.page
-  }
-  Hub
-  .find()
-  .populate('creator')
-  .sort('-createdAt')
-  .limit(30)
-  .paginater(options, (err, data) => {
-    if (err) return next(err)
 
+  var query = {}
+  var options = {
+    // select:   'title date author',
+    sort: { createdAt: -1 },
+    populate: 'creator',
+    // lean: true,
+    offset: req.query.offset || 0,
+    limit: 30
+  }
+
+  Hub.paginate(query, options).then(result => {
     res.locals.isSubscribed = (hub) => {
       let id = hub._id.toString()
       return subscribedHubsIds.indexOf(id) !== -1
     }
-
-    res.render('hubs/index', data)
-  })
+    res.render('hubs/index', result)
+  }).catch(next)
 })
 
 // GET /hubs/subscription
 router.get('/subscription', ifUser, (req, res, next) => {
   let subscriptions = res.locals.subscriptions || []
   let subscribedHubsIds = subscriptions.map(subscription => subscription.hub._id.toString())
+
+  var query = {_id: {$in: subscribedHubsIds}}
   var options = {
-    perPage: 10,
-    delta: 3,
-    page: req.query.page
+    // select:   'title date author',
+    sort: { createdAt: -1 },
+    populate: 'creator',
+    // lean: true,
+    offset: req.query.offset || 0,
+    limit: 30
   }
 
-  Hub
-  .find({_id: {$in: subscribedHubsIds}})
-  .populate('creator')
-  .sort('-createdAt')
-  .limit(30)
-  .paginater(options, (err, data) => {
-    if (err) return next(err)
-
+  Hub.paginate(query, options).then(result => {
     res.locals.isSubscribed = (hub) => {
       let id = hub._id.toString()
       return subscribedHubsIds.indexOf(id) !== -1
     }
-    data.subscriptionPage = true
-    res.render('hubs/index', data)
-  })
+    result.subscriptionPage = true
+    res.render('hubs/subscription', result)
+  }).catch(next)
 })
 
 // GET /hubs/new
@@ -83,46 +78,43 @@ router.get('/:slug/edit', ifUser, loadHub, ifCanEdit, (req, res, next) => {
 // GET /hubs/:slug
 router.get('/:slug', loadHub, loadSubscription, (req, res, next) => {
   let hub = res.locals.hub
+
+  var query = {hubs: { $in: [hub._id] }}
   var options = {
-    perPage: 10,
-    delta: 3,
-    page: req.query.page
+    // select:   'title date author',
+    sort: { createdAt: -1 },
+    populate: 'domain hubs creator',
+    // lean: true,
+    offset: req.query.offset || 0,
+    limit: 30
   }
+
   res.locals.isSubscribed = (hub) => !!res.locals.subscription
 
-  Article
-  .find({hubs: { $in: [hub._id] }})
-  .populate('hubs')
-  .populate('domain')
-  .populate('creator')
-  .sort('-createdAt')
-  .paginater(options, (err, data) => {
-    if (err) return next(err)
-    res.render('hubs/show', data)
-  })
+  Article.paginate(query, options).then(result => {
+    res.render('hubs/show', result)
+  }).catch(next)
 })
 
 // GET /hubs/:slug/subscribers
 router.get('/:slug/subscribers', loadHub, loadSubscription, (req, res, next) => {
   let hub = res.locals.hub
+  var query = {hub: hub._id}
   var options = {
-    perPage: 10,
-    delta: 3,
-    page: req.query.page
+    // select:   'title date author',
+    sort: { createdAt: -1 },
+    populate: 'creator',
+    // lean: true,
+    offset: req.query.offset || 0,
+    limit: 30
   }
 
   res.locals.isSubscribed = (hub) => !!res.locals.subscription
 
-  SubscriptionUserToHub
-  .find({hub: hub._id})
-  .populate('creator')
-  .sort('-createdAt')
-  .paginater(options, (err, data) => {
-    if (err) return next(err)
-    data.results = data.results.map(subscription => subscription.creator)
-    
-    res.render('hubs/subscribers', data)
-  })
+  SubscriptionUserToHub.paginate(query, options).then(result => {
+    result.docs = result.docs.map(subscription => subscription.creator)
+    res.render('hubs/subscribers', result)
+  }).catch(next)
 })
 
 // PUT /hubs/:slug

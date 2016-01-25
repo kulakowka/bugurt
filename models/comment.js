@@ -1,5 +1,8 @@
 'use strict'
 
+// Packages
+var mongoosePaginate = require('mongoose-paginate')
+
 // Configs
 var mongoose = require('../config/mongoose')
 var marked = require('../config/marked')
@@ -32,6 +35,7 @@ var schema = new Schema({
 }, { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
 
 // Model plugins
+schema.plugin(mongoosePaginate)
 schema.plugin(require('./plugins/deletedAt'))
 
 // Model virtual attributes

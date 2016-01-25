@@ -2,6 +2,7 @@
 
 // Packages
 var bcrypt = require('bcrypt')
+var mongoosePaginate = require('mongoose-paginate')
 
 // Configs
 var mongoose = require('../config/mongoose')
@@ -66,6 +67,7 @@ var schema = new Schema({
 }, { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
 
 // Model plugins
+schema.plugin(mongoosePaginate)
 schema.plugin(require('./plugins/deletedAt'))
 schema.plugin(require('./plugins/abilities'))
 

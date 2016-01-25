@@ -1,0 +1,9 @@
+extends ../layout
+
+block head
+  title= __('Хабы на которые вы подписаны')
+
+block content
+  include includes/tabs
+  include includes/list
+  +paginate('/hubs/subscription')

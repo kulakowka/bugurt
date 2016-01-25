@@ -1,0 +1,5 @@
+mixin paginate(url)
+  - var nextOffset = +offset + limit
+  if +total > nextOffset
+    .paginate
+      a(href=url+"?offset=" + nextOffset)= __('Показать еще')

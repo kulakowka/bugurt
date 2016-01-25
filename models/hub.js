@@ -2,6 +2,7 @@
 
 // Packages
 var slug = require('limax')
+var mongoosePaginate = require('mongoose-paginate')
 
 // Configs
 var mongoose = require('../config/mongoose')
@@ -48,6 +49,9 @@ var schema = new Schema({
     default: 0
   }
 }, { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
+
+// Model plugins
+schema.plugin(mongoosePaginate)
 
 // Model static methods (Hub.updateArticlesCountHubs)
 schema.statics.updateArticlesCountHubs = function (hubs) {

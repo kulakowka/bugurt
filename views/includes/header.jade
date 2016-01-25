@@ -5,8 +5,8 @@ header.siteHeader
         span.dropdown
           a.item.handle(href="/articles/new")= __('Создать')
           span.menu.right
-            a(href="/articles/new")= __('Создать публикацию')
-            a(href="/hubs/new")= __('Создать хаб')
+            a(href="/articles/new")= __('Публикацию')
+            a(href="/hubs/new")= __('Хаб')
       include ./subscribedHubs
       li
         span.dropdown
@@ -25,6 +25,9 @@ header.siteHeader
         a.item(href="/auth/signin" rel="nofollow")= __('Вход')
       li
         a.item(href="/auth/signup" rel="nofollow")= __('Регистрация')
+
+  a.logo(href="/")
+    img(src="/logo_64.png" alt="Bugurt.ru" width="32" height="32")
 
   ul.leftMenu
     li

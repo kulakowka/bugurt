@@ -12,7 +12,7 @@ autosize($('textarea'))
 // Selectize
 $('select[name="hubs"]').selectize({
   create: false,
-  maxItems: 1
+  maxItems: 3
 })
 
 // Fast click

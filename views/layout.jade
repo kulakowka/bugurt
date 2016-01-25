@@ -9,12 +9,8 @@ html
   body(class=env)
     .layout
       include ./includes/header
-      //- include ./includes/sidebar
       .content 
         block content
-      
-
-      include ./includes/footer
     script.
       // remove img with on load error
       (function(){function cb () {this.parentNode.removeChild(this)};for(var i=0,n=document.images,l=n.length;i<l;i++) n[i].onerror = cb}())

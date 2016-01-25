@@ -1,5 +1,5 @@
 fontsize1 = 14px
-fontsize2 = 18px
+fontsize2 = 17px
 fontsize3 = 13px
 fontsize4 = 22px
 fontfamily1 = "Lucida Grande", Helvetica, Arial, sans-serif
@@ -54,7 +54,7 @@ a
 
 // https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 .layout
-  max-width 800px
+  max-width 720px
   margin auto
   // background #fff
   &:after
@@ -104,11 +104,17 @@ footer
   border-top 1px solid #eee
   color #999
 header
-  background #222 //#4078c0
-  padding 0 10px
+  background #222
+  padding 5px 10px
   margin 0 0 20px
-  min-height 30px
-
+  min-height 42px
+  a.logo
+    display block
+    float left
+    margin-right 10px
+    img
+      width 32px
+      height 32px
   .leftMenu
     float left
   .rightMenu
@@ -123,7 +129,7 @@ header
       display inline-block
       a.item
         display inline-block
-        line-height 30px
+        line-height 32px
         color white
       a.item:first-letter
         text-transform uppercase 

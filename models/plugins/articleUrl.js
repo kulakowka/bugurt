@@ -23,6 +23,10 @@ module.exports = exports = function deletedAtPlugin (schema, options) {
 
   schema.pre('save', function (next) {
     if (!this.isModified('url')) return next()
+    if (!this.url) return next()
+  
+    console.log('this.url', this.url)
+
     let urlObject = url.parse(this.url)
     this.url = urlObject.hostname && urlObject.href
     let hostname = urlObject.hostname && urlObject.hostname.replace(/^www./i, '')

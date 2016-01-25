@@ -3,7 +3,6 @@ if subscriptions && subscriptions.length
     span.dropdown
       a.item.handle(href="/articles")= __('Читать')
       span.menu.right
-        a(href="/articles")= __('Все публикации')
-        a(href="/articles/subscription")= __('По подписке')
+        a(href="/articles/subscription")= __('Моя лента')
         each subscription in subscriptions
           a(href="/hubs/"+subscription.hub.slug)= subscription.hub.title

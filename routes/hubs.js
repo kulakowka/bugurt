@@ -40,31 +40,6 @@ router.get('/', (req, res, next) => {
   }).catch(next)
 })
 
-// GET /hubs/subscription
-router.get('/subscription', ifUser, (req, res, next) => {
-  let subscriptions = res.locals.subscriptions || []
-  let subscribedHubsIds = subscriptions.map(subscription => subscription.hub._id.toString())
-
-  var query = {_id: {$in: subscribedHubsIds}}
-  var options = {
-    // select:   'title date author',
-    sort: { createdAt: -1 },
-    populate: 'creator',
-    // lean: true,
-    offset: req.query.offset || 0,
-    limit: 30
-  }
-
-  Hub.paginate(query, options).then(result => {
-    res.locals.isSubscribed = (hub) => {
-      let id = hub._id.toString()
-      return subscribedHubsIds.indexOf(id) !== -1
-    }
-    result.subscriptionPage = true
-    res.render('hubs/subscription', result)
-  }).catch(next)
-})
-
 // GET /hubs/new
 router.get('/new', ifUser, (req, res, next) => {
   res.render('hubs/new', {hub: {}})

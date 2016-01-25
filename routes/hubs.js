@@ -17,9 +17,10 @@ const getForbiddenError = require('./errors/forbidden')
 const getNotFoundError = require('./errors/notFound')
 
 // GET /hubs
-router.get('/', loadSubscriptions, (req, res, next) => {
+router.get('/', (req, res, next) => {
   let subscriptions = res.locals.subscriptions || []
-  let subscribedHubsIds = subscriptions.map(subscription => subscription.hub.toString())
+  let subscribedHubsIds = subscriptions.map(subscription => subscription.hub._id.toString())
+  console.log('subscribedHubsIds', subscribedHubsIds)
   var options = {
     perPage: 10,
     delta: 3,
@@ -43,9 +44,9 @@ router.get('/', loadSubscriptions, (req, res, next) => {
 })
 
 // GET /hubs/subscription
-router.get('/subscription', ifUser, loadSubscriptions, (req, res, next) => {
+router.get('/subscription', ifUser, (req, res, next) => {
   let subscriptions = res.locals.subscriptions || []
-  let subscribedHubsIds = subscriptions.map(subscription => subscription.hub.toString())
+  let subscribedHubsIds = subscriptions.map(subscription => subscription.hub._id.toString())
   var options = {
     perPage: 10,
     delta: 3,
@@ -178,18 +179,6 @@ function loadSubscription (req, res, next) {
   .exec((err, subscription) => {
     if (err) return next(err)
     res.locals.subscription = subscription
-    next()
-  })
-}
-
-function loadSubscriptions (req, res, next) {
-  if (!req.user) return next()
-
-  SubscriptionUserToHub
-  .find({creator: req.user._id})
-  .exec((err, subscriptions) => {
-    if (err) return next(err)
-    res.locals.subscriptions = subscriptions
     next()
   })
 }

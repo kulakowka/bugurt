@@ -12,6 +12,7 @@ module.exports = function loadSubscriptions (req, res, next) {
 
   SubscriptionUserToHub
   .find({creator: req.user._id})
+  .sort('-createdAt')
   .populate('hub')
   .exec((err, subscriptions) => {
     if (err) return next(err)

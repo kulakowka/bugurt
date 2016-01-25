@@ -19,22 +19,19 @@ const getNotFoundError = require('./errors/notFound')
 // GET /domains/:hostname
 router.get('/:hostname', loadDomain, (req, res, next) => {
   let domain = res.locals.domain
+  var query = {domain: domain._id}
   var options = {
-    perPage: 10,
-    delta: 3,
-    page: req.query.page
+    // select:   'title date author',
+    sort: { createdAt: -1 },
+    populate: 'domain hubs creator',
+    // lean: true,
+    offset: req.query.offset || 0,
+    limit: 30
   }
 
-  Article
-  .find({domain: domain._id})
-  .populate('hubs')
-  .populate('domain')
-  .populate('creator')
-  .sort('-createdAt')
-  .paginater(options, (err, data) => {
-    if (err) return next(err)
-    res.render('domains/show', data)
-  })
+  Article.paginate(query, options).then(result => {
+    res.render('domains/show', result)
+  }).catch(next)
 })
 
 module.exports = router

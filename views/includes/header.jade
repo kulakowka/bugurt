@@ -3,6 +3,12 @@ header.siteHeader
     if currentUser
       li
         span.dropdown
+          a.item.handle(href="/articles/new")= __('Создать')
+          span.menu.right
+            a(href="/articles/new")= __('Создать публикацию')
+            a(href="/hubs/new")= __('Создать хаб')
+      li
+        span.dropdown
           a.item.handle(href="/users/" + currentUser.username)= currentUser.username
           span.menu.right
             a(href="/users/" + currentUser.username)= currentUser.username
@@ -11,6 +17,8 @@ header.siteHeader
             a(href="/users/" + currentUser.username + "/hubs")= __('Мои хабы')
             a(href="/settings")= __('Настройки')
             a.js-button-logout(href="#")= __('Выход')
+
+            
     else 
       li
         a.item(href="/auth/signin" rel="nofollow")= __('Вход')
@@ -24,6 +32,6 @@ header.siteHeader
     unless currentUser
       li 
         a.item(href="/hubs")= __('Хабы')
-    li
-      a.item(href="/users")= __('Пользователи')
+    //- li
+    //-   a.item(href="/users")= __('Пользователи')
   

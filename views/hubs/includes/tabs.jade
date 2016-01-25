@@ -1,7 +1,5 @@
 if currentUser
   .pageTabs
-    .rightTabs
-      a.btn.btn-action(href="/hubs/new")= __('Создать хаб')
     a.tab(href="/hubs/subscription" class=subscriptionPage ? "active" : "")= __('Подписка')
     a.tab(href="/hubs" class=subscriptionPage ? "" : "active")= __('Все хабы')
 

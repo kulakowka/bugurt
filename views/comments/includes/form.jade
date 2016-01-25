@@ -1,13 +1,13 @@
 unless currentUser
   .guestNotice 
-    a(href="/auth/signin" rel="nofollow")= __('Sign in')
-    = " " + __('or') + " "
-    a(href="/auth/signup" rel="nofollow")= __('sign up')
-    = " " + __("to post comments")
+    a(href="/auth/signin" rel="nofollow")= __('Войдите')
+    = " " + __('или') + " "
+    a(href="/auth/signup" rel="nofollow")= __('зарегистрируйтесь')
+    = " " + __("чтобы оставлять комментарии")
 else
   form.commentForm(action=(comment._id ? "/comments/"+comment._id+"?_method=PUT" : "/comments") method="post" autocomplete="off" enctype="application/x-www-form-urlencoded")
     input(type="hidden" name="article" placeholder="article" value=article._id)
     .field
-      textarea(name="content" rows="2" placeholder=__("Comment content") required)= comment.content
+      textarea(name="content" rows="2" placeholder=__("Ваш комментарий") required)= comment.content
     .field
-      button(type="submit")= __('save')
+      button(type="submit")= __('написать')

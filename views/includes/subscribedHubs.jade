@@ -1,12 +1,9 @@
-if currentUser
-  if subscriptions && subscriptions.length
-    li
-      span.dropdown
-        a.item.handle(href="/articles")= __('Мои хабы')
-        span.menu.left
-          a(href="/articles/subscription")= __('Лента всех хабов')
-          each subscription in subscriptions
-            a(href="/hubs/"+subscription.hub.slug)= subscription.hub.title
-  
-  li 
-    a.item(href="/hubs")= __('Хабы')
+if subscriptions && subscriptions.length
+  li
+    span.dropdown
+      a.item.handle(href="/articles")= __('Меню')
+      span.menu.right
+        a(href="/articles")= __('Все публикации')
+        a(href="/articles/subscription")= __('По подписке')
+        each subscription in subscriptions
+          a(href="/hubs/"+subscription.hub.slug)= subscription.hub.title

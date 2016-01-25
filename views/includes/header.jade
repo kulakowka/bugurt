@@ -7,6 +7,7 @@ header.siteHeader
           span.menu.right
             a(href="/articles/new")= __('Создать публикацию')
             a(href="/hubs/new")= __('Создать хаб')
+      include ./subscribedHubs
       li
         span.dropdown
           a.item.handle(href="/users/" + currentUser.username)= currentUser.username
@@ -26,12 +27,10 @@ header.siteHeader
         a.item(href="/auth/signup" rel="nofollow")= __('Регистрация')
 
   ul.leftMenu
-    include ./subscribedHubs
     li
-      a.item(href="/articles")= __('Публикации')            
-    unless currentUser
-      li 
-        a.item(href="/hubs")= __('Хабы')
+      a.item(href="/articles")= __('Публикации')              
+    li 
+      a.item(href="/hubs")= __('Хабы')
     //- li
     //-   a.item(href="/users")= __('Пользователи')
   

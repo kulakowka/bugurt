@@ -19,21 +19,21 @@ article
     .content.textHtml!= article.html
   .meta
     a.commentsCount(href="/articles/"+article._id+"/"+article.slug+"#comments")= pluralize(article.commentsCount, __('нет комментариев'), __('%d комментарий'), __('%d комментария'), __('%d комментариев')) 
-    = " | "
+    = " · "
     a(href="/articles/"+article._id+"/"+article.slug)
       time(title=__('Дата публикации: ') + moment(article.createdAt).calendar() datetime=moment(article.createdAt).format())= moment(article.createdAt).fromNow()
-    = " | "
+    = " · "
     a.username(href="/users/"+article.creator.username title=__('Автор публикации: ') + article.creator.username)= article.creator.username
     
     if article.hubs.length
       span.hubs 
-        = " | "
+        = " · "
         each hub, index in article.hubs
           if index
             = ", "
           a(href="/hubs/"+hub.slug)= hub.title
 
     if article.domain
-      = " | "      
+      = " · "      
       a.hostName(href="/domains/" + article.domain.hostname title=__('Домен на который ссылается публикация '))= article.domain.hostname
     

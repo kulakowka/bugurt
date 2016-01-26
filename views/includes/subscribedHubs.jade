@@ -2,7 +2,8 @@ if subscriptions && subscriptions.length
   li
     span.dropdown
       a.item.handle(href="/feed")= __('Читать')
-      span.menu.right
+      span.menu.left
+        a(href="/")= __('Все публикации')
         a(href="/feed")= __('Моя лента')
         each subscription in subscriptions
           a(href="/hubs/"+subscription.hub.slug)= subscription.hub.title

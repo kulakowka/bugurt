@@ -1,12 +1,13 @@
-extends ../layout_auth
+extends ../layout
 
 block head
   title= __('Вход')
 
 block content
-  h1= __('Вход')
+  
 
   form.authForm.js-form-signin
+    h1= __('Вход')
     .field
       label.field-label(for="username-field")= __('Логин:')
       input.field-input(id="username-field" type="text" name="username" placeholder=__("логин") maxLength="20" required)

@@ -18,39 +18,7 @@ const getNotFoundError = require('./errors/notFound')
 
 // GET /articles
 router.get('/', (req, res, next) => {
-  var query = {}
-  var options = {
-    // select:   'title date author',
-    sort: { createdAt: -1 },
-    populate: 'domain hubs creator',
-    // lean: true,
-    offset: req.query.offset || 0,
-    limit: 30
-  }
-
-  Article.paginate(query, options).then(result => {
-    res.render('articles/index', result)
-  }).catch(next)
-})
-
-// GET /articles/subscription
-router.get('/subscription', ifUser, (req, res, next) => {
-  let subscriptions = res.locals.subscriptions
-  let hubs = subscriptions.map(subscription => subscription.hub)
-
-  var query = {hubs: {$in: hubs}}
-  var options = {
-    // select:   'title date author',
-    sort: { createdAt: -1 },
-    populate: 'domain hubs creator',
-    // lean: true,
-    offset: req.query.offset || 0,
-    limit: 30
-  }
-
-  Article.paginate(query, options).then(result => {
-    res.render('articles/subscription', result)
-  }).catch(next)
+  res.redirect('/')
 })
 
 // GET /articles/new

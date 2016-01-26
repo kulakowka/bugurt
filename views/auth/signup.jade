@@ -1,12 +1,13 @@
-extends ../layout_auth
+extends ../layout
 
 block head
   title= __('Регистрация')
 
 block content
-  h1= __('Регистрация')
+  
 
   form.authForm.js-form-signup
+    h1= __('Регистрация')
     .field
       label.field-label(for="username-field")= __('Логин:')
       input.field-input(id="username-field" type="text" name="username" placeholder=__("логин") autocomplete="off" maxLength="20" required)

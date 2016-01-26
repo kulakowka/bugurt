@@ -20,7 +20,7 @@ function processEmail (job, done) {
   GetEmailTemplateService(job.data)
   .then(result => {
     var data = getData(job, result)
-    console.log('send email', data)
+    console.log('send email to %s', data.to)
     mailgunSend(data, done)
   })
   .catch(done)

@@ -2,6 +2,7 @@ extends ../layout
 
 block head
   title= article.title
+block meta
   meta(content=article.content name='description')
   meta(property="og:type" content="article")
   meta(property="og:url" content="http://bugurt.ru/articles/" + article._id + "/" + article.slug)

@@ -1,8 +1,5 @@
 extends ../layout
 
-block head
-  title= __('Публикации')
-
 block content
   include includes/list
   +paginate('/articles')

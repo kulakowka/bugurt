@@ -2,6 +2,13 @@ extends ../layout
 
 block head
   title= user.username
+block meta
+  meta(name='description' content=__('Профиль пользователя ') + user.username )
+  meta(property="og:type" content="profile")
+  meta(property="og:url" content="http://bugurt.ru/users/" + user.username)
+  meta(property="og:title" content=user.username)
+  meta(property="og:description" content=__('Профиль пользователя ') + user.username )
+  meta(property="og:profile:username" content=user.username)
 
 block content
   if user.isDeleted

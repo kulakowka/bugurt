@@ -1,7 +1,10 @@
 extends ../../layout
 
 block head
-  title= __('Комментарии пользователя')
+  title= __('Комментарии пользователя ') + user.username
+block meta
+  meta(name='description' content=__('Комментарии пользователя ') + user.username )
+
 
 block content
   if user.isDeleted

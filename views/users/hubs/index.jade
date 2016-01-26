@@ -1,7 +1,9 @@
 extends ../../layout
 
 block head
-  title= __('Хабы пользователя')
+  title= __('Хабы пользователя ') + user.username
+block meta
+  meta(name='description' content=__('Хабы пользователя ') + user.username )
 
 block content
   if user.isDeleted

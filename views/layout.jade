@@ -4,14 +4,15 @@ html
     link(rel='stylesheet', href='/css/app.css')
     block head
       title Бугурт.ру
-      meta(content=description name='description')
+    block meta
+      meta(content="Сообщество по обмену премудростями" name='description')
       meta(property="og:type" content="website")
       meta(property="og:url" content="http://bugurt.ru")
       meta(property="og:title" content="Бугурт.ру")
-      meta(property="og:description" content="Ололо - спротлото!")
+      meta(property="og:description" content="Сообщество по обмену премудростями")
       meta(property="og:image" content="http://bugurt.ru/logo.png")
-      meta(property="og:site_name" content="Бугурт.ру")
-      meta(name='apple-mobile-web-app-title' content='Бугурт.ру')
+    meta(property="og:site_name" content="Бугурт.ру")
+    meta(name='apple-mobile-web-app-title' content='Бугурт.ру')
     include includes/meta
     include includes/ga
     //- mixins

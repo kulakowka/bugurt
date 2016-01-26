@@ -1,8 +1,10 @@
 extends ../../layout
 
 block head
-  title= __('Публикации пользователя')
-
+  title= __('Публикации пользователя ') + user.username
+block meta
+  meta(name='description' content=__('Публикации пользователя ') + user.username )
+  
 block content
   if user.isDeleted
     include ../includes/deleted

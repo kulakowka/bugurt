@@ -1,6 +1,3 @@
-// TODO: Надо сделать несколько разных файлов. Один глобальный. 
-// А еще один - для авторизованных пользователей. Который будем подключать только на некоторых страницах.
-
 var $ = require('jquery')
 var autosize = require('autosize')
 var attachFastClick = require('fastclick')

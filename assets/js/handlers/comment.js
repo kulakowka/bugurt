@@ -1,12 +1,13 @@
 'use strict'
 
 var $ = require('jquery')
+var autosize = require('autosize')
 
 module.exports.onFormSubmit = function onFormSubmit (event) {
   var form = $(this)
-  var writeTab = form.find('.tab[data-frame="write"]')
   var data = form.serialize()
   var commentsList = $('.commentsList')
+  var textarea = form.find('textarea').get(0)
 
   $.post('/comments', data).done(function (html) {
     commentsList.append(html)
@@ -15,7 +16,7 @@ module.exports.onFormSubmit = function onFormSubmit (event) {
   })
 
   form.trigger('reset')
-  writeTab.click()
+  autosize.update(textarea)
 
   return false
 }

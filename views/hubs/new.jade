@@ -4,4 +4,7 @@ block head
   title= __('Создание хаба')
 
 block content
-  include includes/form
+  if currentUser.emailConfirmed
+    include includes/form
+  else
+    .guestNotice= __('Подтвердите email чтобы иметь возможность создавать новые хабы')

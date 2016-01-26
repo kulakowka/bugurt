@@ -1,11 +1,10 @@
 form.articleForm(action=(article._id ? "/articles/"+article._id+"?_method=PUT" : "/articles") method="post" autocomplete="off" enctype="application/x-www-form-urlencoded")
   .field
-    input(type="text" name="title" placeholder=__("Заголовок") value=article.title maxLength="150" required autofocus)
+    input.field-input(type="text" name="title" placeholder=__("Заголовок") value=article.title maxLength="150" required autofocus)
   .field
-    input(type="url" name="url" placeholder=__("URL") value=article.url maxLength="2000" )
-  
+    input.field-input(type="url" name="url" placeholder=__("URL") value=article.url maxLength="2000" )
   .field  
-    textarea(name="content" rows="6" placeholder=__("Текст") maxLength="10000")= article.content  
+    textarea.field-input(name="content" rows="6" placeholder=__("Текст") maxLength="10000")= article.content  
   .field
     select(name="hubs" multiple placeholder=__("Хабы"))
       each hub in hubs

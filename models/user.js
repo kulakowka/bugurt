@@ -164,7 +164,7 @@ schema.pre('save', function (next) {
   user.generateConfirmationToken((err, token) => {
     if (err) return next(err)
     SendEmail({
-      title: 'Confirmation instructions',
+      title: 'Подтвердите email',
       user: user,
       token: token,
       template: 'users/confirm-email'

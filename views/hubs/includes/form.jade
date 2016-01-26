@@ -1,9 +1,9 @@
 form.hubForm(action=(hub._id ? "/hubs/"+hub.slug+"?_method=PUT" : "/hubs") method="post" autocomplete="off" enctype="application/x-www-form-urlencoded")
-  div
-    input(type="text" name="title" placeholder=__("Название") value=hub.title maxLength="80" required autofocus)
-    div= __('Старайтесь выбирать название состоящение из одного слова.')
-  div
-    textarea(name="description" rows="6" placeholder=__("Описание") maxLength="200")= hub.description
-    div= __('Если название может иметь несколько значений, будет здорово добавить описание, чтобы пользователи могли понять о чём этот хаб. Не лишним будет так же рассказать о том, какие публикации вы хотели бы видеть в своем хабе.')
-  div
-    button(type="submit")= __('Сохранить')
+  .field
+    input.field-input(type="text" name="title" placeholder=__("Название") value=hub.title maxLength="80" required autofocus)
+    .field-description= __('Старайтесь выбирать название состоящение из одного слова.')
+  .field
+    textarea.field-input(name="description" rows="6" placeholder=__("Описание") maxLength="200")= hub.description
+    .field-description= __('Если название может иметь несколько значений, будет здорово добавить описание, чтобы пользователи могли понять о чём этот хаб. Не лишним будет так же рассказать о том, какие публикации вы хотели бы видеть в своем хабе.')
+  .field
+    button.btn.btn-submit(type="submit")= __('Сохранить')

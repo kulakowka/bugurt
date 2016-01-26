@@ -1,3 +1,5 @@
+
+
 unless currentUser
   .guestNotice 
     a(href="/auth/signin" rel="nofollow")= __('Войдите')
@@ -5,9 +7,12 @@ unless currentUser
     a(href="/auth/signup" rel="nofollow")= __('зарегистрируйтесь')
     = " " + __("чтобы оставлять комментарии")
 else
-  form.commentForm(action=(comment._id ? "/comments/"+comment._id+"?_method=PUT" : "/comments") method="post" autocomplete="off" enctype="application/x-www-form-urlencoded")
-    input(type="hidden" name="article" placeholder="article" value=article._id)
-    .field
-      textarea(name="content" rows="2" placeholder=__("Ваш комментарий") required)= comment.content
-    .field
-      button(type="submit")= __('Написать')
+  if currentUser.emailConfirmed
+    form.commentForm(action=(comment._id ? "/comments/"+comment._id+"?_method=PUT" : "/comments") method="post" autocomplete="off" enctype="application/x-www-form-urlencoded")
+      input(type="hidden" name="article" placeholder="article" value=article._id)
+      .field
+        textarea.field-input(name="content" rows="2" placeholder=__("Ваш комментарий") required)= comment.content
+      .field
+        button.btn.btn-submit(type="submit")= __('Написать')
+  else
+    .guestNotice= __('Подтвердите email чтобы иметь возможность писать комментарии')

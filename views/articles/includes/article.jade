@@ -25,7 +25,7 @@ article
     = " | "
     a.username(href="/users/"+article.creator.username title=__('Автор публикации: ') + article.creator.username)= article.creator.username
     
-    if showFullContent && article.hubs.length
+    if article.hubs.length
       span.hubs 
         = " | "
         each hub, index in article.hubs

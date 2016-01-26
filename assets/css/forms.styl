@@ -1,50 +1,16 @@
-.settingsForm,
-.authForm,
-.userForm,
-.hubForm,
+.commentForm,
+.hubForm,    
 .articleForm,
-.commentForm
-  button
-    font-size fontsize1
-    font-family fontfamily1
-    background #222
-    color #fff
-    border 0
-    padding 5px 20px
-  
-  input[type="text"],
-  input[type="url"],
-  input[type="email"],
-  input[type="password"],
-  textarea
-    font-size fontsize1
-    font-family fontfamily1
-    display block
-    width 100%
-    box-sizing border-box 
-    margin 0 0 10px
-    border 1px solid #eee  
-    resize none
-    padding 5px
-    font-size fontsize1
-    padding 5px 10px
-    line-height 1.5em
-    &:focus
-      outline none
-      // background-color rgba(0, 0, 0, 0.03)
-      border-color #222 //#00B7FF
-  input[name="title"]
-    font-size fontsize2
-    
-  .selectize-control
-    margin-bottom 10px
-    
 .subscriptionForm,
 .settingsForm,
 .authForm
   .field + .field
     margin-top 20px
   .field
+    .field-description
+      margin-top 5px
+      font-size fontsize3
+      color grey
     .field-label
       display inline-block
       font-size fontsize1
@@ -53,19 +19,24 @@
       margin-top 5px
     .field-input
       border 1px solid rgba(0, 0, 0, 0.1)
-      
       display block
-      
       font-family fontfamily1
       display block
       width 100%
       box-sizing border-box 
-      margin 0 0 10px
-      
+      margin 0px
       resize none
-      
       font-size fontsize1
       padding 5px 10px
       line-height 1.5em
       &:focus 
         border 1px solid #222
+        outline none
+        
+.hubForm,
+.articleForm
+  .field
+    input[name="title"].field-input
+      font-size fontsize2        
+  .selectize-control
+    margin-bottom 10px

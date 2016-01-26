@@ -4,4 +4,8 @@ block head
   title= __('Создание публикации')
 
 block content
-  include includes/form
+  if currentUser.emailConfirmed
+    include includes/form
+  else
+    .guestNotice= __('Подтвердите email чтобы иметь возможность создавать новые публикации')
+  

@@ -20,7 +20,7 @@ function processEmail (job, done) {
   GetEmailTemplateService(job.data)
   .then(result => {
     var data = getData(job, result)
-
+    console.log('send email', data)
     mailgunSend(data, done)
   })
   .catch(done)
@@ -30,9 +30,8 @@ function processEmail (job, done) {
  * The function generates and returns a specially formatted object required to be sent to mailGun
  */
 function getData (job, result) {
-  
   return {
-    from: 'GeekHubs.com <hello@geekhubs.com>',  // TODO: necessary to make a global configuration
+    from: 'Bugurt.ru <no-reply@bugurt.ru>',
     to: job.data.user.email,
     subject: job.data.title,
     html: result.html

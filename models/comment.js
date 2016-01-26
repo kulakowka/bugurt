@@ -61,7 +61,7 @@ schema.post('save', function (comment) {
     if (!article.creator.email) return;
 
     SendEmail({
-      title: 'New comment to your article «' + article.title + '»',
+      title: 'Новый комментарий к вашей статье «' + article.title + '»',
       user: article.creator,
       article: article,
       comment: comment,  // without comment.html virtual method

@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /auth
+Disallow: /feed
+Disallow: /admin
+Disallow: /settings
+Disallow: /articles/new
+Disallow: /articles/*/edit
+Disallow: /hubs/new
+Disallow: /hubs/*/edit
+Disallow: /hubs/*/subscribers
+Disallow: /users
+Disallow: /users/*/articles
+Disallow: /users/*/comments
+Disallow: /users/*/hubs
+
+Sitemap: http://bugurt.ru/sitemap/articles.xml
+Host: bugurt.ru

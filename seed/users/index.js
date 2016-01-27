@@ -9,7 +9,9 @@ const DEFAULT_PASSWORD = 'pass'
 const admin = {
   username: 'admin',
   password: 'pass',
-  isAdmin: true
+  isAdmin: true,
+  emailConfirmed: true,
+  email: 'kulakowka@gmail.com'
 }
 
 module.exports = function seedUsers (usersCount) {

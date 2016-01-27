@@ -33,6 +33,7 @@ function getFakeArticle (result) {
   return {
     hubs: hubs,
     creator: user._id,
+    url: faker.internet.url(),
     title: faker.name.title(),
     summary: faker.lorem.paragraph(),
     content: faker.lorem.paragraphs()

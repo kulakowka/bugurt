@@ -11,3 +11,6 @@ if subscriptions && subscriptions.length
           a(href="/hubs/"+subscription.hub.slug)
             = subscription.hub.title
             span.count= subscription.hub.articlesCount
+else
+  li
+    a.item(href="/")= __('Публикации')              

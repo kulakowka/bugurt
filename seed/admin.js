@@ -6,7 +6,9 @@ var User = require('../models/user')
 const admin = {
   username: 'admin',
   password: 'pass',
-  isAdmin: true
+  isAdmin: true,
+  emailConfirmed: true,
+  email: 'kulakowka@gmail.com'
 }
 
 User.create(admin, (err, user) => {

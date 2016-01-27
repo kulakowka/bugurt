@@ -31,11 +31,7 @@ header.siteHeader
 
   
   ul.leftMenu
-    if currentUser
-      include ./subscribedHubs
-    else
-      li
-        a.item(href="/")= __('Публикации')              
+    include ./subscribedHubs
     li 
       a.item(href="/hubs")= __('Хабы')
     //- li

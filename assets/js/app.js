@@ -7,7 +7,6 @@ attachFastClick(document.body)
 
 // Configure pjax
 new Pjax({
-  // elements: 'a[href]',
   analytics: function () {
     window.ga('send', 'pageview', {page: document.location.pathname, title: document.title})
   }

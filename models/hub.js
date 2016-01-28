@@ -6,6 +6,7 @@ var mongoosePaginate = require('mongoose-paginate')
 
 // Configs
 var mongoose = require('../config/mongoose')
+var marked = require('../config/marked')
 
 // Models
 var User = require('./user')
@@ -52,6 +53,10 @@ var schema = new Schema({
 
 // Model plugins
 schema.plugin(mongoosePaginate)
+
+schema.virtual('html').get(function () {
+  return marked(this.description)
+})
 
 // Model static methods (Hub.updateArticlesCountHubs)
 schema.statics.updateArticlesCountHubs = function (hubs) {

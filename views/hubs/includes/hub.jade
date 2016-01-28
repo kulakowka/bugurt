@@ -10,8 +10,8 @@
       a.title(href="/hubs/"+hub.slug)= hub.title
       include subscriptionBtn
   
-
-  .description= hub.description
+  if showFullHub
+    .description!= hub.html
   .meta
     a.articlesCount(href="/hubs/"+hub.slug)= pluralize(hub.articlesCount, __('нет публикаций'), __('%d публикация'), __('%d публикации'), __('%d публикаций'))
     = " · "

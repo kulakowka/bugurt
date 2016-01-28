@@ -4,9 +4,7 @@ if subscriptions && subscriptions.length
       a.item.handle(href="/feed")= __('Читать')
       span.menu.left
         a(href="/")= __('Все публикации')
-        a(href="/feed")
-          = __('Моя лента')
-          span.count= "99+"
+        a(href="/feed")= __('Моя лента')
         each subscription in subscriptions
           a(href="/hubs/"+subscription.hub.slug)
             = subscription.hub.title

@@ -1,19 +1,17 @@
 var $ = require('jquery')
-var autosize = require('autosize')
 var attachFastClick = require('fastclick')
-require('selectize')
-
-// from a jQuery collection
-autosize($('textarea'))
-
-// Selectize
-$('select[name="hubs"]').selectize({
-  create: false,
-  maxItems: 3
-})
+var Pjax = require('pjax')
 
 // Fast click
 attachFastClick(document.body)
+
+// Configure pjax
+new Pjax({
+  // elements: 'a[href]',
+  analytics: function () {
+    window.ga('send', 'pageview', {page: document.location.pathname, title: document.title})
+  }
+})
 
 // Handlers
 var comment = require('./handlers/comment')
@@ -22,8 +20,15 @@ var hub = require('./handlers/hub')
 var subscription = require('./handlers/subscription')
 var auth = require('./handlers/auth')
 var dropdown = require('./handlers/dropdown')
+var common = require('./handlers/common')
+
+// run common when page first loaded
+common()
 
 $(document)
+
+  // pjax
+  .on('pjax:success', common)
 
   // dropdown
   .on('click', '.dropdown .handle', dropdown.onHandleClick)
@@ -47,3 +52,5 @@ $(document)
   .on('submit', '.js-form-signup', auth.signup)
   .on('submit', '.js-form-user-update', auth.userUpdate)
   .on('submit', '.js-form-user-destroy', auth.userDestroy)
+
+  

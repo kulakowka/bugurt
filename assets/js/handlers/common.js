@@ -3,6 +3,8 @@ var autosize = require('autosize')
 var Dropzone = require('dropzone')
 require('selectize')
 
+Dropzone.autoDiscover = false
+
 module.exports = function initCommonLibs () {
   // from a jQuery collection
   autosize($('textarea'))
@@ -13,16 +15,32 @@ module.exports = function initCommonLibs () {
     maxItems: 3
   })
 
-  Dropzone.autoDiscover = false
+  initDropzone()
+}
 
-  var myDropzone = new Dropzone('div#dropzone', {
+function initDropzone () {
+  if (!$('#dropzone').length) return
+
+  var dropzone = new Dropzone('div#dropzone', {
+    addRemoveLinks: true,
     maxFiles: 10,
     maxFilesize: 2,
     parallelUploads: 5,
     acceptedFiles: 'image/*',
-    url: '/upload/image',
+    url: '/files',
     dictDefaultMessage: 'Перетащите сюда файл с изображением',
     dictFallbackMessage: 'Ваш браузер не поддерживает загрузку картинок с помощью перетягивания',
+    dictCancelUpload: 'Отменить',
+    dictCancelUploadConfirmation: 'Точно отменить?',
+    dictRemoveFile: 'Удалить'
     // dictMaxFilesExceeded: ''
+  })
+
+  dropzone.on('removedfile', function (file) {
+    console.log('removedfile', dropzone.files)
+  })
+
+  dropzone.on('success', function (file, responseText) {
+    console.log('success', dropzone.files)
   })
 }

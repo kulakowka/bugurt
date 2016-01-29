@@ -46,12 +46,16 @@ router.post('/', ifUser, upload.array('file', 10), (req, res, next) => {
   })
 })
 
-// GET /files/:id
-router.get('/:id', (req, res, next) => {
+// GET /files/:id.:ext
+router.get('/:id.:ext', (req, res, next) => {
   File.findById(req.params.id, (err, file) => {
     if (err) return next(err)
     if (!file) return next(getNotFoundError('File not found'))
-    res.setHeader('content-type', file.mimetype)
+    let cacheTime = res.app.get('env') === 'development' ? 0 : 315360000
+    res.set({
+      'Content-Type': file.mimetype,
+      'Cache-Control': 'public, max-age=' + cacheTime
+    })
     fs.createReadStream(file.path).pipe(res)
   })
 })

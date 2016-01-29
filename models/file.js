@@ -16,8 +16,20 @@ var schema = Schema({
 }, { timestamps: { createdAt: 'createdAt' } })
 
 // Model virtual attributes
-schema.virtual('url').get(function () {
-  return path.join('/files', this.id)
+schema.virtual('thumbnail').get(function () {
+  return getCdnUrl(this, 100)
+})
+
+schema.virtual('big').get(function () {
+  return getCdnUrl(this)
 })
 
 module.exports = mongoose.model('File', schema)
+
+function getCdnUrl (file, width) {
+  let ext = file.mimetype.split('/').pop()
+  let url = `http://localhost:3000/files/${file.id}.${ext}`
+  width = width || 1024
+  if (process.env.NODE_ENV === 'production') return `https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?url=${url}&container=focus&refresh=2592000&resize_w=${width}`
+  return url
+}

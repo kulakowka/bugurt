@@ -17,8 +17,12 @@ article
       
   if showFullContent
     .content.textHtml!= article.html
-    each image in article.images
-      img(src=image.url)
+    
+    if article.images.length
+      .lightboxGallery
+        each image in article.images
+          a.lightbox(href=image.big target="_blank")
+            img(src=image.thumbnail width=100)
   .meta
     a.commentsCount(href="/articles/"+article._id+"/"+article.slug+"#comments")= pluralize(article.commentsCount, __('нет комментариев'), __('%d комментарий'), __('%d комментария'), __('%d комментариев')) 
     = " · "

@@ -11,8 +11,10 @@ block meta
   meta(property="og:article:published_time" content=article.createdAt.toISOString())
   meta(property="og:article:modified_time" content=article.updatedAt.toISOString())
   meta(property="og:article:author" content=article.creator.username)
-  each hub, index in article.hubs
+  each hub in article.hubs
     meta(property="og:article:tag" content=hub.title)
+  each image in article.images
+    meta(property="og:image" content=image.url)
 
 block content
   - var showFullContent = true

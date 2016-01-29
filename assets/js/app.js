@@ -7,6 +7,7 @@ attachFastClick(document.body)
 
 // Configure pjax
 new Pjax({
+  elements: 'a[href]:not(.lightbox)',
   analytics: function () {
     window.ga('send', 'pageview', {page: document.location.pathname, title: document.title})
   }
@@ -20,11 +21,15 @@ var subscription = require('./handlers/subscription')
 var auth = require('./handlers/auth')
 var dropdown = require('./handlers/dropdown')
 var common = require('./handlers/common')
+var lightbox = require('./handlers/lightbox')
 
 // run common when page first loaded
 common()
 
 $(document)
+
+  // lightbox
+  .on('click', 'a.lightbox', lightbox.show)
 
   // pjax
   .on('pjax:success', common)

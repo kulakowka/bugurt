@@ -13,5 +13,8 @@ form.articleForm(action=(article._id ? "/articles/"+article._id+"?_method=PUT" :
         else
           option(value=hub._id)= hub.title
   .field
+    #dropzone.dropzone
+
+  .field
     button.btn.btn-submit(type="submit")= __('Опубликовать')
 

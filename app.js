@@ -67,6 +67,7 @@ app.use('/auth', require('./routes/auth'))
 app.use('/settings', require('./routes/settings'))
 app.use('/subscription', require('./routes/subscription'))
 app.use('/sitemap', require('./routes/sitemap'))
+app.use('/upload', require('./routes/uploads'))
 
 // Mount kue JSON api
 app.use('/admin/kue', require('./routes/policies/ifAdmin'), kue.app)

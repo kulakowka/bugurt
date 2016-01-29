@@ -54,7 +54,8 @@ router.put('/:id', ifUser, loadArticleNoPopulate, ifCanEdit, (req, res, next) =>
     title: req.body.title,
     url: req.body.url,
     content: req.body.content,
-    hubs: req.body.hubs
+    hubs: req.body.hubs,
+    images: req.body.file
   })
 
   article.save((err, article) => {
@@ -70,6 +71,7 @@ router.post('/', ifUser, (req, res, next) => {
     url: req.body.url,
     content: req.body.content,
     hubs: req.body.hubs,
+    images: req.body.file,
     creator: req.user._id
   })
 
@@ -98,9 +100,7 @@ function loadArticle (req, res, next) {
 
   Article
   .findById(id)
-  .populate('hubs')
-  .populate('domain')
-  .populate('creator')
+  .populate('hubs domain creator images')
   .exec((err, article) => {
     if (err) return next(err)
     if (!article) return next(getNotFoundError('Article not found'))

@@ -17,6 +17,8 @@ article
       
   if showFullContent
     .content.textHtml!= article.html
+    each image in article.images
+      img(src=image.url)
   .meta
     a.commentsCount(href="/articles/"+article._id+"/"+article.slug+"#comments")= pluralize(article.commentsCount, __('нет комментариев'), __('%d комментарий'), __('%d комментария'), __('%d комментариев')) 
     = " · "

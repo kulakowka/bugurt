@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
   var options = {
     // select:   'title date author',
     sort: { createdAt: -1 },
-    populate: 'domain hubs creator',
+    populate: 'domain hubs creator images',
     // lean: true,
     offset: req.query.offset || 0,
     limit: 30

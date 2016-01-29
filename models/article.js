@@ -44,6 +44,10 @@ var schema = new Schema({
   hubs: [{
     type: Schema.Types.ObjectId,
     ref: 'Hub'
+  }],
+  images: [{
+    type: Schema.Types.ObjectId,
+    ref: 'File'
   }]
 }, { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
 

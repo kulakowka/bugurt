@@ -37,10 +37,21 @@ function initDropzone () {
   })
 
   dropzone.on('removedfile', function (file) {
-    console.log('removedfile', dropzone.files)
+    var res = JSON.parse(file.xhr.responseText)
+    var id = res.shift()._id
+    var form = $(dropzone.element).closest('form')
+    var input = form.find('input[value="' + id + '"]')
+    input.remove()
+    console.log('removedfile', id, input)
   })
 
   dropzone.on('success', function (file, responseText) {
-    console.log('success', dropzone.files)
+    var res = JSON.parse(file.xhr.responseText)
+    var id = res.shift()._id
+    var form = $(dropzone.element).closest('form')
+    var input = $('<input type="hidden" name="file">')
+    input.val(id)
+    form.append(input)
+    console.log('success', id)
   })
 }
